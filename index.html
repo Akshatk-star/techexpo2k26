@@ -2547,6 +2547,7 @@ footer {
       </div>
     </div>
   </section>
+</div>
 
 
 <!-- Sponsor Preview -->
@@ -2569,7 +2570,6 @@ footer {
       </div>
     </div>
   </section>
-</div>
 -->
 
 <!-- ==================== EVENTS PAGE ==================== -->
@@ -3090,9 +3090,21 @@ function setActiveNav(page) {
 
 // Page Transitions
 function showPage(page) {
+  const targetPage = document.getElementById('page-' + page);
+  const fallbackPage = document.getElementById('page-home');
+
+  if (!targetPage) {
+    console.warn('showPage: missing page target', page);
+  }
+
+  const nextPage = targetPage || fallbackPage;
+  const nextPageId = targetPage ? page : 'home';
+
+  if (!nextPage) return;
+
   document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
-  document.getElementById('page-' + page).classList.add('active');
-  setActiveNav(page);
+  nextPage.classList.add('active');
+  setActiveNav(nextPageId);
   window.scrollTo({ top: 0, behavior: 'smooth' });
   setTimeout(() => initScrollReveal(), 100);
   closeMenu();
