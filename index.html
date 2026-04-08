@@ -467,15 +467,13 @@ section { padding: 90px 24px; }
 }
 
 .highlight-card {
-  background: var(--bg-card);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(255,255,255,0.08);
+  background: rgba(10,10,18,0.75);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgba(255,255,255,0.06);
   border-radius: 20px;
-  padding: 32px 28px;
   display: flex;
   flex-direction: column;
-  gap: 12px; /* Consistency: Gap handles all spacing */
   justify-content: flex-start;
   align-items: flex-start;
   text-align: left;
@@ -511,78 +509,111 @@ section { padding: 90px 24px; }
   .bento-large, .bento-wide { grid-column: span 1; }
 }
 
-.bento-large .event-icon { font-size: 4.2rem; margin-bottom: 10px; }
-.bento-large h3 { font-size: 2.2rem; }
-.bento-large p { font-size: 1.1rem; line-height: 1.6; margin-bottom: 20px; max-width: 85%; }
-
-.event-icon {
-  font-size: 2.2rem;
-  display: block;
-  filter: drop-shadow(0 0 12px rgba(0,229,255,0.4));
-  transition: transform 0.4s ease;
-  height: 40px; /* Aligns icons in the same row */
-  display: flex;
-  align-items: center;
-}
-.highlight-card:hover .event-icon { transform: scale(1.1) rotate(-5deg); }
-
-.highlight-card h3 {
+.hc-num {
+  position: absolute; top: -10px; right: -8px;
   font-family: var(--font-display);
-  font-size: 1.1rem;
-  color: var(--text-primary);
-  letter-spacing: 1px;
+  font-size: 5rem;
+  font-weight: 900;
+  color: rgba(255,255,255,0.03);
+  letter-spacing: -4px;
+  line-height: 0.8;
+  transition: all 0.5s ease;
+  user-select: none;
+  z-index: 0;
+  pointer-events: none;
 }
-.highlight-card p { 
-  font-size: 0.88rem; 
-  color: var(--text-secondary); 
-  line-height: 1.5;
+.highlight-card:hover .hc-num { 
+  color: rgba(0,229,255,0.07);
+  transform: translate(-5px, 5px) scale(1.05);
+}
+
+.hc-header {
+  padding: 28px 28px 10px;
+  width: 100%;
+  display: flex; align-items: center; gap: 16px;
+  z-index: 1;
+  position: relative;
+}
+.hc-head-text { padding-right: 60px; }
+.hc-title {
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  color: var(--text-primary);
+  letter-spacing: 0.8px;
+  line-height: 1.2;
+}
+.hc-cat {
+  display: inline-block;
+  margin-top: 4px;
+  font-size: 0.65rem;
+  color: var(--neon-cyan);
+  letter-spacing: 2px;
+  font-family: var(--font-mono);
+  font-weight: 700;
+  border: 1px solid rgba(0,229,255,0.25);
+  padding: 2px 8px;
+  border-radius: 4px;
+  background: rgba(0,229,255,0.03);
+}
+
+.hc-body { padding: 4px 28px 24px; width: 100%; flex-grow: 1; z-index: 1; }
+.hc-desc {
+  font-size: 0.88rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  margin-bottom: 20px;
   display: -webkit-box;
   -webkit-line-clamp: 3;
   line-clamp: 3;
   -webkit-box-orient: vertical;
   overflow: hidden;
 }
-.bento-large p { -webkit-line-clamp: 5; line-clamp: 5; }
+.bento-large .hc-desc { -webkit-line-clamp: 5; line-clamp: 5; font-size: 1.05rem; }
 
-.prize-badge {
-  padding: 8px 18px;
-  background: rgba(0,229,255,0.06);
-  border: 1px solid rgba(0,229,255,0.2);
-  border-radius: 30px;
-  font-size: 0.8rem;
-  color: var(--neon-cyan);
-  font-family: var(--font-mono);
-  letter-spacing: 1px;
-  text-transform: uppercase;
-  flex-shrink: 0;
+.hc-footer {
+  width: 100%;
+  padding: 16px 28px 18px;
+  border-top: 1px solid rgba(255,255,255,0.05);
+  display: flex; align-items: center; justify-content: space-between;
+  background: rgba(0,0,0,0.18);
+  z-index: 1;
 }
-.bento-large .prize-badge, .bento-wide .prize-badge { margin-top: auto; }
 
-/* Bento specific enhancements */
-.bento-badge {
-  position: absolute; top: 25px; right: 25px;
-  padding: 4px 12px;
-  background: linear-gradient(135deg, var(--neon-purple), var(--neon-blue));
-  color: white;
-  font-family: var(--font-mono);
-  font-size: 0.65rem;
-  font-weight: 700;
-  border-radius: 4px;
-  letter-spacing: 2px;
-  box-shadow: 0 0 15px rgba(160, 32, 240, 0.4);
+.event-icon {
+  font-size: 2.4rem;
+  display: flex;
+  align-items: center;
+  filter: drop-shadow(0 0 10px rgba(0,229,255,0.3));
 }
+.bento-large .event-icon { font-size: 4rem; }
+
+.hc-prize {
+  font-family: var(--font-display);
+  font-size: 0.78rem;
+  color: var(--gold);
+  text-shadow: 0 0 10px rgba(255,215,0,0.15);
+  display: flex; align-items: center; gap: 8px;
+  letter-spacing: 0.5px;
+}
+
+.bento-large .hc-header { padding: 40px 40px 14px; }
+.bento-large .hc-body { padding: 8px 40px 32px; }
+.bento-large .hc-title { font-size: 2.2rem; }
+.bento-large .hc-num { font-size: 8rem; top: -15px; right: -10px; }
+.bento-large .hc-footer { padding: 22px 40px 24px; }
 
 .highlight-chips {
-  display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 15px;
+  display: flex; flex-wrap: wrap; gap: 10px; margin-top: 8px;
 }
 .h-chip {
-  font-size: 0.75rem;
+  font-size: 0.72rem;
   color: var(--text-secondary);
-  background: rgba(255,255,255,0.04);
-  border: 1px solid rgba(255,255,255,0.06);
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.08);
   padding: 4px 12px;
   border-radius: 20px;
   font-family: var(--font-mono);
+  display: flex; align-items: center; gap: 6px;
 }
 
 /* STATS */
@@ -1998,74 +2029,196 @@ footer {
         <p class="section-subtitle">Compete, collaborate, and create across a spectrum of cutting-edge technical challenges.</p>
       </div>
       <div class="highlights-grid">
-        <!-- Flagship: Hacknovate (Large) -->
+        <!-- Event #01: Hacknovate (Large) -->
         <div class="highlight-card bento-large reveal" onclick="showEventDetail('hacknovate')">
-          <div class="bento-badge">FLAGSHIP</div>
-          <span class="event-icon">🚀</span>
-          <h3>HACKNOVATE</h3>
-          <p>The ultimate 3-round ideation and prototyping marathon. Build, refine, and present your vision to a jury of industry experts.</p>
-          <div class="highlight-chips">
-            <span class="h-chip">⏱ 3 Phases</span>
-            <span class="h-chip">👥 4 Members</span>
-            <span class="h-chip">📅 1st & 2nd Year</span>
-            <span class="h-chip">🎯 Direct Mentorship</span>
+          <div class="hc-num">01</div>
+          <div class="hc-header">
+            <span class="event-icon">🚀</span>
+            <div class="hc-head-text">
+              <div class="hc-title">HACKNOVATE</div>
+              <span class="hc-cat">HACKATHON</span>
+            </div>
           </div>
-          <div class="prize-badge">🏆 Special Awards & Recognition</div>
+          <div class="hc-body">
+            <p class="hc-desc">The ultimate 3-round ideation and prototyping marathon. Build, refine, and present your vision to a jury of industry experts.</p>
+            <div class="highlight-chips">
+              <span class="h-chip">⏱ 3 Phases</span>
+              <span class="h-chip">👥 4 Members</span>
+              <span class="h-chip">📅 1st & 2nd Year</span>
+            </div>
+          </div>
+          <div class="hc-footer">
+            <div class="hc-prize">🏆 Special Awards</div>
+            <button class="btn-sm">VIEW DETAILS</button>
+          </div>
         </div>
 
-        <!-- Featured: BGMI -->
+        <!-- Event #02: BGMI -->
         <div class="highlight-card reveal" onclick="showEventDetail('bgmi')">
-          <span class="event-icon">🎮</span>
-          <h3>BGMI CHAMPIONSHIP</h3>
-          <p>Squad up and dive into the ultimate Battle Royale experience. Strategy, communication, and gunplay are required.</p>
-          <div class="prize-badge">🏆 Trophies & Cash</div>
-        </div>
-
-        <!-- Featured: Coding Battle -->
-        <div class="highlight-card reveal" onclick="showEventDetail('codingbattle')">
-          <span class="event-icon">💻</span>
-          <h3>CODING BATTLE</h3>
-          <p>A pure algorithmic programming contest to test your problem-solving speed and logic optimization.</p>
-          <div class="prize-badge">🏆 Cash & Trophies</div>
-        </div>
-
-        <!-- Feature: Project Exhibition (Wide) -->
-        <div class="highlight-card bento-wide reveal" onclick="showEventDetail('exhibition')">
-          <span class="event-icon">🔬</span>
-          <h3>PROJECT EXHIBITION</h3>
-          <p>A high-stakes showcase of innovation where final year students present functional technical prototypes and research projects to industry professionals.</p>
-          <div class="highlight-chips">
-            <span class="h-chip">👥 2–4 Members</span>
-            <span class="h-chip">📅 3rd & 4th Year</span>
-            <span class="h-chip">⚙️ Functional Demo</span>
+          <div class="hc-num">02</div>
+          <div class="hc-header">
+            <span class="event-icon">🎮</span>
+            <div class="hc-head-text">
+              <div class="hc-title">BGMI</div>
+              <span class="hc-cat">GAMING</span>
+            </div>
           </div>
-          <div class="prize-badge">🏆 Cash Prizes & Goodies</div>
+          <div class="hc-body">
+            <p class="hc-desc">Squad up and dive into the ultimate Battle Royale experience. Strategy and gunplay required.</p>
+            <div class="highlight-chips">
+              <span class="h-chip">⏱ Rounds</span>
+              <span class="h-chip">👥 Squad 4</span>
+              <span class="h-chip">📱 Mobile Only</span>
+            </div>
+          </div>
+          <div class="hc-footer">
+            <div class="hc-prize">🏆 Trophies & Cash</div>
+            <button class="btn-sm">VIEW DETAILS</button>
+          </div>
         </div>
 
-        <!-- Standard Grid Items -->
+        <!-- Event #03: Coding Battle -->
+        <div class="highlight-card reveal" onclick="showEventDetail('codingbattle')">
+          <div class="hc-num">03</div>
+          <div class="hc-header">
+            <span class="event-icon">💻</span>
+            <div class="hc-head-text">
+              <div class="hc-title">CODING BATTLE</div>
+              <span class="hc-cat">CODING</span>
+            </div>
+          </div>
+          <div class="hc-body">
+            <p class="hc-desc">A pure algorithmic programming contest to test your problem-solving speed.</p>
+            <div class="highlight-chips">
+              <span class="h-chip">⏱ Timed</span>
+              <span class="h-chip">👥 Solo</span>
+              <span class="h-chip">💻 Offline</span>
+            </div>
+          </div>
+          <div class="hc-footer">
+            <div class="hc-prize">🏆 Cash & Trophies</div>
+            <button class="btn-sm">VIEW DETAILS</button>
+          </div>
+        </div>
+
+        <!-- Event #04: Project Exhibition (Wide) -->
+        <div class="highlight-card bento-wide reveal" onclick="showEventDetail('exhibition')">
+          <div class="hc-num">04</div>
+          <div class="hc-header">
+            <span class="event-icon">🔬</span>
+            <div class="hc-head-text">
+              <div class="hc-title">PROJECT EXHIBITION</div>
+              <span class="hc-cat">EXHIBITION</span>
+            </div>
+          </div>
+          <div class="hc-body">
+            <p class="hc-desc">A high-stakes showcase of innovation where final year students present functional technical prototypes.</p>
+            <div class="highlight-chips">
+              <span class="h-chip">⏱ Live Demo</span>
+              <span class="h-chip">👥 2–4 Members</span>
+              <span class="h-chip">📅 3rd & 4th Year</span>
+            </div>
+          </div>
+          <div class="hc-footer">
+            <div class="hc-prize">🏆 Prizes & Goodies</div>
+            <button class="btn-sm">VIEW DETAILS</button>
+          </div>
+        </div>
+
+        <!-- Event #05: Prompt It Down -->
         <div class="highlight-card reveal" onclick="showEventDetail('prompt')">
-          <span class="event-icon">✨</span>
-          <h3>PROMPT IT DOWN</h3>
-          <p>An AI art generation contest where participants must craft the perfect prompt to accurately represent a situation.</p>
-          <div class="prize-badge">🏆 Trophies & Prizes</div>
+          <div class="hc-num">05</div>
+          <div class="hc-header">
+            <span class="event-icon">✨</span>
+            <div class="hc-head-text">
+              <div class="hc-title">PROMPT IT DOWN</div>
+              <span class="hc-cat">AI ART</span>
+            </div>
+          </div>
+          <div class="hc-body">
+            <p class="hc-desc">Craft the perfect prompt to represent a situation accurately.</p>
+            <div class="highlight-chips">
+              <span class="h-chip">⏱ Timed</span>
+              <span class="h-chip">👥 Solo</span>
+              <span class="h-chip">🔮 AI Art</span>
+            </div>
+          </div>
+          <div class="hc-footer">
+            <div class="hc-prize">🏆 Trophies</div>
+            <button class="btn-sm">VIEW DETAILS</button>
+          </div>
         </div>
+
+        <!-- Event #06: Tech Quiz -->
         <div class="highlight-card reveal" onclick="showEventDetail('techquiz')">
-          <span class="event-icon">💡</span>
-          <h3>TECHNICAL QUIZ</h3>
-          <p>An exclusive event for first-year students to test their fundamental knowledge across general science and tech.</p>
-          <div class="prize-badge">🏆 Trophies & Cash</div>
+          <div class="hc-num">06</div>
+          <div class="hc-header">
+            <span class="event-icon">💡</span>
+            <div class="hc-head-text">
+              <div class="hc-title">TECHNICAL QUIZ</div>
+              <span class="hc-cat">QUIZ</span>
+            </div>
+          </div>
+          <div class="hc-body">
+            <p class="hc-desc">Exclusive for first-year students to test fundamentals.</p>
+            <div class="highlight-chips">
+              <span class="h-chip">⏱ 3 Rounds</span>
+              <span class="h-chip">👥 Team 2</span>
+              <span class="h-chip">📅 1st Year</span>
+            </div>
+          </div>
+          <div class="hc-footer">
+            <div class="hc-prize">🏆 Trophies</div>
+            <button class="btn-sm">VIEW DETAILS</button>
+          </div>
         </div>
+
+        <!-- Event #07: Chess -->
         <div class="highlight-card reveal" onclick="showEventDetail('chess')">
-          <span class="event-icon">♟️</span>
-          <h3>CHESS TOURNAMENT</h3>
-          <p>Classic mind battles. Outsmart your opponents following standard FIDE rules in a knockout format.</p>
-          <div class="prize-badge">🏆 Cash & Goodies</div>
+          <div class="hc-num">07</div>
+          <div class="hc-header">
+            <span class="event-icon">♟️</span>
+            <div class="hc-head-text">
+              <div class="hc-title">CHESS</div>
+              <span class="hc-cat">GAMING</span>
+            </div>
+          </div>
+          <div class="hc-body">
+            <p class="hc-desc">Classic mind battles in a knockout format.</p>
+            <div class="highlight-chips">
+              <span class="h-chip">⏱ Timed</span>
+              <span class="h-chip">👥 Solo</span>
+              <span class="h-chip">⚔️ Knockout</span>
+            </div>
+          </div>
+          <div class="hc-footer">
+            <div class="hc-prize">🏆 Cash & Goodies</div>
+            <button class="btn-sm">VIEW DETAILS</button>
+          </div>
         </div>
+
+        <!-- Event #08: Ludo -->
         <div class="highlight-card reveal" onclick="showEventDetail('ludo')">
-          <span class="event-icon">🎲</span>
-          <h3>LUDO MASHUP</h3>
-          <p>The timeless board game brought into a competitive arena. Strategy mixed with luck. Race to victory!</p>
-          <div class="prize-badge">🏆 Prizes & Goodies</div>
+          <div class="hc-num">08</div>
+          <div class="hc-header">
+            <span class="event-icon">🎲</span>
+            <div class="hc-head-text">
+              <div class="hc-title">LUDO MASHUP</div>
+              <span class="hc-cat">GAMING</span>
+            </div>
+          </div>
+          <div class="hc-body">
+            <p class="hc-desc">The timeless board game in a competitive arena.</p>
+            <div class="highlight-chips">
+              <span class="h-chip">⏱ Match Based</span>
+              <span class="h-chip">👥 Solo</span>
+              <span class="h-chip">🎲 Knockout</span>
+            </div>
+          </div>
+          <div class="hc-footer">
+            <div class="hc-prize">🏆 Prizes</div>
+            <button class="btn-sm">VIEW DETAILS</button>
+          </div>
         </div>
       </div>
     </div>
