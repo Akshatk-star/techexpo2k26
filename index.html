@@ -511,9 +511,9 @@ section { padding: 90px 24px; }
   .bento-large, .bento-wide { grid-column: span 1; }
 }
 
-.bento-large .event-icon { font-size: 3.8rem; }
-.bento-large h3 { font-size: 1.8rem; }
-.bento-large p { font-size: 1.05rem; line-height: 1.6; margin-bottom: 10px; }
+.bento-large .event-icon { font-size: 4.2rem; margin-bottom: 10px; }
+.bento-large h3 { font-size: 2.2rem; }
+.bento-large p { font-size: 1.1rem; line-height: 1.6; margin-bottom: 20px; max-width: 85%; }
 
 .event-icon {
   font-size: 2.2rem;
@@ -545,11 +545,11 @@ section { padding: 90px 24px; }
 .bento-large p { -webkit-line-clamp: 5; line-clamp: 5; }
 
 .prize-badge {
-  padding: 6px 16px;
+  padding: 8px 18px;
   background: rgba(0,229,255,0.06);
   border: 1px solid rgba(0,229,255,0.2);
   border-radius: 30px;
-  font-size: 0.75rem;
+  font-size: 0.8rem;
   color: var(--neon-cyan);
   font-family: var(--font-mono);
   letter-spacing: 1px;
@@ -557,6 +557,33 @@ section { padding: 90px 24px; }
   flex-shrink: 0;
 }
 .bento-large .prize-badge, .bento-wide .prize-badge { margin-top: auto; }
+
+/* Bento specific enhancements */
+.bento-badge {
+  position: absolute; top: 25px; right: 25px;
+  padding: 4px 12px;
+  background: linear-gradient(135deg, var(--neon-purple), var(--neon-blue));
+  color: white;
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  font-weight: 700;
+  border-radius: 4px;
+  letter-spacing: 2px;
+  box-shadow: 0 0 15px rgba(160, 32, 240, 0.4);
+}
+
+.highlight-chips {
+  display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 15px;
+}
+.h-chip {
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.06);
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-family: var(--font-mono);
+}
 
 /* STATS */
 .stats-section {
@@ -1973,10 +2000,17 @@ footer {
       <div class="highlights-grid">
         <!-- Flagship: Hacknovate (Large) -->
         <div class="highlight-card bento-large reveal" onclick="showEventDetail('hacknovate')">
+          <div class="bento-badge">FLAGSHIP</div>
           <span class="event-icon">🚀</span>
           <h3>HACKNOVATE</h3>
-          <p>Our flagship 3-round hackathon where teams start with a problem statement, refine it with mentors, and present the final solution to an external jury. The ultimate stage for innovators.</p>
-          <div class="prize-badge">🏆 Special Awards</div>
+          <p>The ultimate 3-round ideation and prototyping marathon. Build, refine, and present your vision to a jury of industry experts.</p>
+          <div class="highlight-chips">
+            <span class="h-chip">⏱ 3 Phases</span>
+            <span class="h-chip">👥 4 Members</span>
+            <span class="h-chip">📅 1st & 2nd Year</span>
+            <span class="h-chip">🎯 Direct Mentorship</span>
+          </div>
+          <div class="prize-badge">🏆 Special Awards & Recognition</div>
         </div>
 
         <!-- Featured: BGMI -->
@@ -1999,8 +2033,13 @@ footer {
         <div class="highlight-card bento-wide reveal" onclick="showEventDetail('exhibition')">
           <span class="event-icon">🔬</span>
           <h3>PROJECT EXHIBITION</h3>
-          <p>Showcase original technical projects to a panel of faculty members and industry professionals. Open exclusively for senior students.</p>
-          <div class="prize-badge">🏆 Prizes & Goodies</div>
+          <p>A high-stakes showcase of innovation where final year students present functional technical prototypes and research projects to industry professionals.</p>
+          <div class="highlight-chips">
+            <span class="h-chip">👥 2–4 Members</span>
+            <span class="h-chip">📅 3rd & 4th Year</span>
+            <span class="h-chip">⚙️ Functional Demo</span>
+          </div>
+          <div class="prize-badge">🏆 Cash Prizes & Goodies</div>
         </div>
 
         <!-- Standard Grid Items -->
