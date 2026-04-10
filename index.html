@@ -2756,14 +2756,14 @@ footer {
             <div class="form-group"><label class="form-label">SELECT EVENTS *</label>
               <select class="form-select" id="f-event">
                 <option value="">Choose an event</option>
-                <option value="hacknovate">🚀 Hacknovate (Hackathon) — TBA</option>
-                <option value="exhibition">🔬 Project Exhibition — TBA</option>
-                <option value="chess">♟️ Chess Tournament — TBA</option>
-                <option value="ludo">🎲 Ludo — TBA</option>
-                <option value="bgmi">🎮 BGMI Tournament — TBA</option>
-                <option value="prompt">✨ Prompt It Down (AI Art) — TBA</option>
-                <option value="codingbattle">💻 Coding Battle — TBA</option>
-                <option value="techquiz">💡 Technical Quiz — TBA</option>
+                <option value="hacknovate">🚀 Hacknovate (Hackathon) — ₹200 per team</option>
+                <option value="exhibition">🔬 Project Exhibition — ₹50 per head / ₹200 per team</option>
+                <option value="chess">♟️ Chess Tournament — ₹50 per head</option>
+                <option value="ludo">🎲 Ludo — ₹50 per head</option>
+                <option value="bgmi">🎮 BGMI Tournament — ₹100 per head / ₹400 per team</option>
+                <option value="prompt">✨ Prompt It Down (AI Art) — ₹50 per head</option>
+                <option value="codingbattle">💻 Coding Battle — ₹50 per head</option>
+                <option value="techquiz">💡 Technical Quiz — ₹50 per head</option>
               </select>
             </div>
             <div class="form-group"><label class="form-label">TEAM NAME (if applicable)</label><input class="form-input" type="text" id="f-team" placeholder="Your team name"></div>
@@ -2785,6 +2785,7 @@ footer {
           <div class="fee-item"><span>Registration Fee</span><span id="sum-fee">₹0</span></div>
           <div class="fee-item"><span>Processing Charge</span><span>₹10</span></div>
           <div class="fee-item total"><span>TOTAL</span><span id="sum-total">₹10</span></div>
+          <p id="sum-note" style="margin-top:12px;font-size:0.78rem;color:var(--text-secondary);line-height:1.5">Select an event to view the pricing logic.</p>
           <div style="margin:24px 0;padding:16px;background:rgba(0,229,255,0.03);border:1px solid var(--border-glow);border-radius:8px;">
             <p style="font-size:0.8rem;color:var(--text-secondary);line-height:1.6">📌 Registration closes <strong style="color:var(--neon-cyan)">March 25, 2026</strong><br><br>🎫 Entry pass & ID card issued at venue<br><br>🍽️ Lunch & snacks included for all registered participants</p>
           </div>
@@ -3131,7 +3132,7 @@ const EVENTS = {
     ],
     prizes: ['Certificates', 'Special Awards', 'Certificates of Participation'],
     prizeLabels: ['Winners', 'Top Teams', 'All Internal Round Qualifier Teams'],
-    fee: 'TBA', teamSize: '4 Members', venue: 'To be announced'
+    fee: '₹200 per team', teamSize: '4 Members', venue: 'To be announced'
   },
   exhibition: {
     icon: '🔬', cat: 'EXHIBITION',
@@ -3148,7 +3149,7 @@ const EVENTS = {
     ],
     prizes: ['Cash Prizes', 'Goodies', 'Certificates'],
     prizeLabels: ['Winner Teams', 'Runner-up Teams', 'Round 2 Qualifier Teams'],
-    fee: 'TBA', teamSize: '2–4 Members', venue: 'Exhibition Hall'
+    fee: '₹50 per head / ₹200 per team', teamSize: '2–4 Members', venue: 'Exhibition Hall'
   },
   chess: {
     icon: '♟️', cat: 'GAMING',
@@ -3165,7 +3166,7 @@ const EVENTS = {
     ],
     prizes: ['Cash Prizes', 'Goodies', 'Participation Ceritficates'],
     prizeLabels: ['Winners', 'Runner-ups', 'Anyone completing 1 match'],
-    fee: 'TBA', teamSize: 'Individual', venue: 'To be announced'
+    fee: '₹50 per head', teamSize: 'Individual', venue: 'To be announced'
   },
   ludo: {
     icon: '🎲', cat: 'GAMING',
@@ -3182,7 +3183,7 @@ const EVENTS = {
     ],
     prizes: ['Cash Prizes', 'Goodies', 'Participation Certificates'],
     prizeLabels: ['Winners', 'Runners-up', 'All valid participants'],
-    fee: 'TBA', teamSize: 'Individual', venue: 'Gaming Arena'
+    fee: '₹50 per head', teamSize: 'Individual', venue: 'Gaming Arena'
   },
   bgmi: {
     icon: '🎮', cat: 'GAMING',
@@ -3199,7 +3200,7 @@ const EVENTS = {
     ],
     prizes: ['Cash Prizes', 'Trophies', 'Certificates'],
     prizeLabels: ['1st Place Squad', 'Runners-up', 'All Valid Participants'],
-    fee: 'TBA', teamSize: '4 Members', venue: 'Gaming Zone'
+    fee: '₹100 per head / ₹400 per team', teamSize: '4 Members', venue: 'Gaming Zone'
   },
   prompt: {
     icon: '✨', cat: 'AI ART',
@@ -3216,7 +3217,7 @@ const EVENTS = {
     ],
     prizes: ['Trophies', 'Exciting Prizes', 'Certificates'],
     prizeLabels: ['1st Place', 'Runners-up', 'Participation'],
-    fee: 'TBA', teamSize: 'Individual', venue: 'Design Lab'
+    fee: '₹50 per head', teamSize: 'Individual', venue: 'Design Lab'
   },
   codingbattle: {
     icon: '💻', cat: 'CODING',
@@ -3233,7 +3234,7 @@ const EVENTS = {
     ],
     prizes: ['Cash Prizes', 'Trophies', 'Certificates'],
     prizeLabels: ['Winner', 'Runners-up', 'Participation'],
-    fee: 'TBA', teamSize: 'Individual', venue: 'CS Labs'
+    fee: '₹50 per head', teamSize: 'Individual', venue: 'CS Labs'
   },
   techquiz: {
     icon: '💡', cat: 'QUIZ',
@@ -3250,7 +3251,7 @@ const EVENTS = {
     ],
     prizes: ['Cash Prizes', 'Trophies', 'Certificates'],
     prizeLabels: ['1st Place', '2nd Place', 'Participation'],
-    fee: 'TBA', teamSize: 'Team of 2', venue: 'Seminar Hall'
+    fee: '₹50 per head', teamSize: 'Team of 2', venue: 'Seminar Hall'
   }
 };
 
@@ -3780,27 +3781,131 @@ const _origShowPage = showPage;
 
 // Registration Logic
 const eventFees = {
-  hacknovate: 0, exhibition: 0, chess: 0, ludo: 0,
-  bgmi: 0, prompt: 0, codingbattle: 0, techquiz: 0
-  // Fees TBA — update values once confirmed by organizers
+  hacknovate: {
+    display: '₹200 per team',
+    mode: 'flat_team',
+    amount: 200,
+    note: 'Flat team fee for up to 4 members.'
+  },
+  exhibition: {
+    display: '₹50 per head / ₹200 per team',
+    mode: 'hybrid',
+    perHead: 50,
+    teamAmount: 200,
+    maxTeamSize: 4,
+    note: '1 participant is billed per head. Teams of 2 to 4 are billed as one team entry.'
+  },
+  chess: {
+    display: '₹50 per head',
+    mode: 'per_head',
+    perHead: 50,
+    note: 'Individual event billed per participant.'
+  },
+  ludo: {
+    display: '₹50 per head',
+    mode: 'per_head',
+    perHead: 50,
+    note: 'Individual event billed per participant.'
+  },
+  bgmi: {
+    display: '₹100 per head / ₹400 per team',
+    mode: 'fixed_team_per_head',
+    perHead: 100,
+    teamAmount: 400,
+    requiredTeamSize: 4,
+    note: 'BGMI is billed for a 4-player squad at ₹100 per head.'
+  },
+  prompt: {
+    display: '₹50 per head',
+    mode: 'per_head',
+    perHead: 50,
+    note: 'Individual event billed per participant.'
+  },
+  codingbattle: {
+    display: '₹50 per head',
+    mode: 'per_head',
+    perHead: 50,
+    note: 'Individual event billed per participant.'
+  },
+  techquiz: {
+    display: '₹50 per head',
+    mode: 'per_head_team',
+    perHead: 50,
+    defaultTeamSize: 2,
+    note: 'Technical Quiz is billed at ₹50 per participant. Enter both team members to see the full team total.'
+  }
 };
 
 document.addEventListener('change', (e) => {
-  if(e.target.id === 'f-event') updateFee();
+  if(e.target.id === 'f-event' || e.target.id === 'f-members') updateFee();
 });
+
+document.addEventListener('input', (e) => {
+  if(e.target.id === 'f-members') updateFee();
+});
+
+function getEnteredMemberCount() {
+  const membersField = document.getElementById('f-members');
+  const extraMembers = membersField
+    ? membersField.value.split(',').map((name) => name.trim()).filter(Boolean).length
+    : 0;
+  return extraMembers + 1;
+}
+
+function formatCurrency(value) {
+  return `₹${value}`;
+}
 
 function updateFee() {
   const sel = document.getElementById('f-event');
   if(!sel) return;
   const prize = document.getElementById('sum-fee');
   const total = document.getElementById('sum-total');
+  const note = document.getElementById('sum-note');
+  const processingCharge = 10;
   
   if (sel.value) {
-    if (prize) prize.textContent = 'TBA';
-    if (total) total.textContent = 'TBA';
+    const feeData = eventFees[sel.value];
+    if (feeData) {
+      const enteredMembers = getEnteredMemberCount();
+      let feeLabel = feeData.display;
+      let feeAmount = 0;
+      let feeNote = feeData.note;
+
+      if (feeData.mode === 'flat_team') {
+        feeAmount = feeData.amount;
+        feeLabel = feeData.display;
+      } else if (feeData.mode === 'per_head') {
+        feeAmount = feeData.perHead;
+        feeLabel = `${formatCurrency(feeData.perHead)} x 1 participant`;
+      } else if (feeData.mode === 'hybrid') {
+        if (enteredMembers > 1) {
+          feeAmount = feeData.teamAmount;
+          feeLabel = `${formatCurrency(feeData.teamAmount)} per team (${enteredMembers} participants entered)`;
+        } else {
+          feeAmount = feeData.perHead;
+          feeLabel = `${formatCurrency(feeData.perHead)} x 1 participant`;
+        }
+      } else if (feeData.mode === 'fixed_team_per_head') {
+        const squadSize = feeData.requiredTeamSize;
+        feeAmount = feeData.teamAmount;
+        feeLabel = `${formatCurrency(feeData.perHead)} x ${squadSize} players = ${formatCurrency(feeData.teamAmount)}`;
+        if (enteredMembers < squadSize) {
+          feeNote = `BGMI requires ${squadSize} players. Add all squad members for a complete registration.`;
+        }
+      } else if (feeData.mode === 'per_head_team') {
+        feeAmount = feeData.perHead * enteredMembers;
+        feeLabel = `${formatCurrency(feeData.perHead)} x ${enteredMembers} participant${enteredMembers > 1 ? 's' : ''}`;
+      }
+
+      if (prize) prize.textContent = feeLabel;
+      if (total) total.textContent = formatCurrency(feeAmount + processingCharge);
+      if (note) note.textContent = feeNote;
+    }
   } else {
     if (prize) prize.textContent = '₹0';
     if (total) total.textContent = '₹10'; // Just processing fee
+    if (note) note.textContent = 'Select an event to view the pricing logic.';
   }
 }
 
